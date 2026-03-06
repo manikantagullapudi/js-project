@@ -1,0 +1,249 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* ===== Navbar ===== */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+nav h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav input {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+nav input::placeholder {
+    color: #e0e0e0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #00eaff;
+}
+
+/* ===== Product Grid ===== */
+#bg {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+/* ===== Product Card ===== */
+#bg a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#bg a div {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    width: 250px;
+    height: 500px;
+    margin: 25px;
+}
+
+#bg a div:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Image ===== */
+#bg img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 10px;
+}
+
+/* ===== Text ===== */
+#bg h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#bg h4 {
+    font-size: 0.9rem;
+    color: #d1f4ff;
+}
+
+#bg p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #eaeaea;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+#bg h2 {
+    margin-top: auto;
+    font-size: 1.1rem;
+    color: #00ffcc;
+}
+
+#bg h3 {
+    font-size: 0.85rem;
+    color: #ffd369;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+@media (max-width: 400px) {
+    nav h1 {
+        font-size: 1.3rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}  
+
+
+
+/* ===== Logout Button ===== */
+#logoutbtn {
+    padding: 8px 16px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    color: #003b3b;
+    background: linear-gradient(135deg, #ff5f6d, #ffc371);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+#logoutbtn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* Active click */
+#logoutbtn:active {
+    transform: scale(0.96);
+}
+
+/* Glass look inside navbar */
+nav #logoutbtn {
+    background: linear-gradient(135deg, #ff4e50, #f9d423);
+    backdrop-filter: blur(8px);
+}
+
+/* ===== Navbar Links (HOME & CART) ===== */
+nav ul li a {
+    padding: 8px 16px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.4px;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+nav ul li a:hover {
+    background: linear-gradient(135deg, #00eaff, #00ffcc);
+    color: #003b3b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* Active click */
+nav ul li a:active {
+    transform: scale(0.95);
+}
+
+/* ===== Cart Badge Style ===== */
+#cart-length {
+    position: relative;
+}
+
+/* optional cart glow */
+#cart-length::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, transparent, rgba(0,234,255,0.4), transparent);
+    filter: blur(10px);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+#cart-length:hover::after {
+    opacity: 1;
+}
+

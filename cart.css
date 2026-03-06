@@ -1,0 +1,219 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* ===== Navbar ===== */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+nav h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav input {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+nav input::placeholder {
+    color: #e0e0e0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #00eaff;
+}
+
+/* ===== Cart Grid ===== */
+#bg {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* ===== Cart Card ===== */
+#bg > div {
+    padding: 20px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#bg > div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Image ===== */
+#bg img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 10px;
+}
+
+/* ===== Text ===== */
+#bg h1 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+#bg p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #eaeaea;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+#bg h2 {
+    font-size: 1.1rem;
+    color: #00ffcc;
+}
+
+#bg h3 {
+    font-size: 0.85rem;
+    color: #ffd369;
+}
+
+/* ===== Delete Button ===== */
+#bg button {
+    margin-top: auto;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ff4e50, #f9d423);
+    color: #2b0000;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#bg button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* ===== Navbar Links (HOME & CART) ===== */
+nav ul li a {
+    padding: 8px 16px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.4px;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+nav ul li a:hover {
+    background: linear-gradient(135deg, #00eaff, #00ffcc);
+    color: #003b3b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* Active click */
+nav ul li a:active {
+    transform: scale(0.95);
+}
+
+/* ===== Cart Badge Style ===== */
+#cart-length {
+    position: relative;
+}
+
+/* optional cart glow */
+#cart-length::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, transparent, rgba(0,234,255,0.4), transparent);
+    filter: blur(10px);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+#cart-length:hover::after {
+    opacity: 1;
+}
+
+#total-box{
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+

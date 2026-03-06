@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": "a64c",
+      "username": "mani",
+      "email": "mani@gmail.com",
+      "password": "mani1234"
+    },
+    {
+      "id": "ee99",
+      "username": "ram",
+      "email": "ram@gmail.com",
+      "password": "ram1234"
+    },
+    {
+      "id": "670d",
+      "username": "ramesh",
+      "email": "ramesh@gmail.com",
+      "password": "ramesh1234"
+    },
+    {
+      "id": "8887",
+      "username": "anusha",
+      "email": "anu901072@gmail.com",
+      "password": "anu123"
+    },
+    {
+      "id": "f0bf",
+      "username": "lakshmi",
+      "email": "lucky@gmail.com",
+      "password": "murthy"
+    },
+    {
+      "id": "615a",
+      "username": "murthy",
+      "email": "murthy@gmail.com",
+      "password": "mani1234"
+    }
+  ],
+  "products": [
+    {
+      "id": "admin-1770638486357",
+      "title": "mens t shirt",
+      "price": "250",
+      "category": "men",
+      "image": "https://static-assets-prod.fnp.com/images/pr/l/v20241008151817/personalised-stark-silver-bracelet-gift_1.jpg",
+      "description": "GIVA's premium earrings collection that compliments your personality effortlessly",
+      "rating": {
+        "rate": 4,
+        "count": 1
+      }
+    }
+  ]
+}
+
+
+

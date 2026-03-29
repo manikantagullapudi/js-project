@@ -133,3 +133,45 @@ function showLogoutPopup(){
         popup.remove();
     },1500);
 }
+
+
+const profileContainer = document.getElementById("profile-container");
+function renderProfile() {
+    const username = localStorage.getItem("loginUser");
+    if (!username) return;
+    const profileBtn = document.createElement("button");
+    profileBtn.textContent = username.charAt(0).toUpperCase() + username.slice(1);
+    profileBtn.className = "profile-btn";
+    profileBtn.onclick = () => openProfileModal(username);
+    profileContainer.appendChild(profileBtn);
+}
+renderProfile();
+
+function openProfileModal(username) {
+    const overlay = document.createElement("div");
+    overlay.className = "profile-overlay";
+
+    const modal = document.createElement("div");
+    modal.className = "profile-modal";
+
+    modal.innerHTML = `
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <p><strong>Username:</strong> ${username}</p>
+            <p><strong>Status:</strong> Active</p>
+        </div>
+        <button id="closeProfile" class="close-btn">Close</button>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    document.getElementById("closeProfile").onclick = () => {
+        overlay.remove();
+    };
+
+    // Close on outside click
+    overlay.onclick = (e) => {
+        if (e.target === overlay) overlay.remove();
+    };
+}

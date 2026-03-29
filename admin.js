@@ -19,7 +19,7 @@ async function addProduct() {
     }
 
     let product = {
-        id: Date.now(),
+        id: "admin-" + Date.now(),
         title: title.value,
         price: price.value,
         category: category.value,
@@ -31,7 +31,8 @@ async function addProduct() {
         }
     };
 
-    await fetch("http://localhost:3000/products", {
+    // Use relative API path
+    await fetch("/api/products", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

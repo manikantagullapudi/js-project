@@ -67,7 +67,7 @@ async function getData(){
         let res1 = await fetch('https://fakestoreapi.com/products');
         let fakeProducts = await res1.json();
 
-        let res2 = await fetch('http://localhost:3000/products');
+        let res2 = await fetch('/api/products');
         let adminProducts = await res2.json();
 
         let mergedProducts = [...fakeProducts, ...adminProducts];

@@ -64,19 +64,42 @@ async function getData(){
         if(localStorage.getItem("loginUser")==null){
             location.replace("login.html");
         }
-        let res1 = await fetch('https://fakestoreapi.com/products');
-        let fakeProducts = await res1.json();
+        
+        let fakeProducts = [];
+        let adminProducts = [];
+        
+        // Fetch from FakeStore API
+        try {
+            let res1 = await fetch('https://fakestoreapi.com/products');
+            fakeProducts = await res1.json();
+        } catch (error) {
+            console.log("FakeStore API error:", error);
+        }
 
-        let res2 = await fetch('/api/products');
-        let adminProducts = await res2.json();
+        // Fetch from your API
+        try {
+            let res2 = await fetch('/api/products');
+            adminProducts = await res2.json();
+        } catch (error) {
+            console.log("Local API error:", error);
+        }
 
         let mergedProducts = [...fakeProducts, ...adminProducts];
-
+        
+        if (mergedProducts.length === 0) {
+            let h1 = document.createElement('h1');
+            h1.textContent = "No products available";
+            bg.appendChild(h1);
+            return;
+        }
+        
         createProductCard(mergedProducts);
-
         allProducts = mergedProducts;
     } catch (error) {
-        console.log(error)  
+        console.log(error);
+        let h1 = document.createElement('h1');
+        h1.textContent = "Error loading products. Please try again.";
+        bg.appendChild(h1);
     }
 }
 getData()

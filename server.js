@@ -16,9 +16,9 @@ server.use(express.static(path.join(__dirname)));
 server.use('/api', router);
 
 // Handle all other routes to serve index.html (for client-side routing)
-// server.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'index.html'));
-// });
+server.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {

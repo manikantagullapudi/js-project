@@ -54,18 +54,40 @@ function oneProductInterface(product){
     }
 }
 
-async function getOneProduct(){
+async function getOneProduct() {
     try {
-        if(localStorage.getItem("loginUser")==null){
+        if (localStorage.getItem("loginUser") == null) {
             location.replace("login.html");
+            return;
         }
-        let id=localStorage.getItem("productId");
-        let res= await fetch('https://fakestoreapi.com/products/'+id);
-        let jsonRes= await res.json();
-        oneProductInterface(jsonRes);
 
+        let id = localStorage.getItem("productId");
+        
+        try {
+            let res = await fetch('https://fakestoreapi.com/products/' + id);
+            if (res.ok) {
+                let jsonRes = await res.json();
+                oneProductInterface(jsonRes);
+                return;
+            }
+        } catch (error) {}
+
+        try {
+            let res = await fetch('http://localhost:3000/products');
+            let adminProducts = await res.json();
+            let product = adminProducts.find(p => String(p.id) === String(id));
+            
+            if (product) {
+                oneProductInterface(product);
+                return;
+            }
+        } catch (error) {}
+
+        productbg.innerHTML = '<h1 style="color:red;text-align:center;">Product Not Found ❌</h1>';
+        
     } catch (error) {
-        console.log(error) 
+        console.log(error)
+        productbg.innerHTML = '<h1 style="color:red;text-align:center;">Error Loading Product</h1>';
     }
 }
 getOneProduct();
@@ -76,7 +98,6 @@ getOneProduct();
 function showAddedPopup(){
     let popup = document.createElement("div");
     popup.textContent = "✅ Added to cart successfully";
-
     popup.style.position = "fixed";
     popup.style.top = "20px";
     popup.style.right = "20px";

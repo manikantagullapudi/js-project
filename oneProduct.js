@@ -59,19 +59,11 @@ async function getOneProduct(){
         if(localStorage.getItem("loginUser")==null){
             location.replace("login.html");
         }
-        let id = localStorage.getItem("productId");
-        
-        // First try to get from your API
-        let res = await fetch('/api/products/' + id);
-        let product = await res.json();
-        
-        // If not found in your API, try FakeStoreAPI
-        if (!product || Object.keys(product).length === 0) {
-            res = await fetch('https://fakestoreapi.com/products/' + id);
-            product = await res.json();
-        }
-        
-        oneProductInterface(product);
+        let id=localStorage.getItem("productId");
+        let res= await fetch('https://fakestoreapi.com/products/'+id);
+        let jsonRes= await res.json();
+        oneProductInterface(jsonRes);
+
     } catch (error) {
         console.log(error) 
     }

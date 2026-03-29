@@ -4,24 +4,23 @@ let password = document.getElementById("password");
 let btn = document.getElementById("btn");
 let msg = document.getElementById("msg");
 
-let user = localStorage.getItem("loginUser"); 
-if(user != null){
-    alert("User already logged in");
-    location.replace("index.html");
-}
+let user =localStorage.getItem("loginUser"); 
+ if(user!=null){
+        alert("User already logged in");
+        location.replace("index.html");
+    }
 
 async function registerUser() {
-    // Use relative API path
-    let data = await fetch("/api/users?email="+email.value);
-    let json = await data.json();
-    
+
+    let data= await fetch("http://localhost:3000/users?email="+email.value)
+    let json=await data.json()
     if(json.length>0){
         msg.textContent="User Already Exists";
         msg.style.color="red";
         return;
     }
 
-    let res = await fetch("/api/users", {
+    let res = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -29,15 +28,10 @@ async function registerUser() {
         body: JSON.stringify({
             username: username.value,
             email: email.value,
-            password: password.value,
-            role: "user"
+            password: password.value
         })
     });
-    
-    showAddedPopup();
-    setTimeout(() => {
-        location.replace("login.html");
-    }, 1500);
+    location.replace("login.html");
 }
 
 btn.onclick = function(event) {
@@ -47,11 +41,13 @@ btn.onclick = function(event) {
         return;
     }
     registerUser();
+    showAddedPopup();
 }
 
 function showAddedPopup(){
     let popup = document.createElement("div");
     popup.textContent = "Registered Successfully✅";
+
     popup.style.position = "fixed";
     popup.style.top = "20px";
     popup.style.right = "20px";
@@ -62,8 +58,11 @@ function showAddedPopup(){
     popup.style.fontSize = "16px";
     popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
     popup.style.zIndex = "9999";
+
     document.body.appendChild(popup);
+
     setTimeout(()=>{
         popup.remove();
     },2000);
 }
+
